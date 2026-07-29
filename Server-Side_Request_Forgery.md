@@ -2,7 +2,15 @@
 SSRF is a web vulnerability that allows an attacker to trick a server into making requests to unintended destinations on the attackers behalf
 
 ## SSRF attacks against the server
-In an SSRF attack against the server, the attacker causes the application to make an HTTP request back to the server that is hosting the application, via its loopback network interface. This typically involves supplying a URL with a hostname like 127.0.0.1 (a reserved IP address that points to the loopback adapter) or localhost (a commonly used name for the same adapter).
+In an SSRF attack against the server, the attacker causes the application to make an HTTP request back to the server that is hosting the application, via its loopback network interface. This typically involves supplying a URL with a hostname like 127.0.0.1 (a reserved IP address that points to the loopback adapter) or localhost (a commonly used name for the same adapter)
+
+# LAB 1
+- Browse to /admin and observe that you can't directly access the admin page.
+- Visit a product, click "Check stock", intercept the request in Burp Suite, and send it to Burp Repeater.
+- Change the URL in the stockApi parameter to http://localhost/admin. This should display the administration interface.
+- Read the HTML to identify the URL to delete the target user, which is:
+http://localhost/admin/delete?username=carlos
+- Submit this URL in the stockApi parameter, to deliver the SSRF attack.
 
 # LAB 1
 - Browse to /admin and observe that you can't directly access the admin page.
