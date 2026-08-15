@@ -22,6 +22,7 @@ Goal - Retrieve the contents of the etc/passwd file
 This is done using Burp Suite. Turn the intercept on, view images in http history, click one of links to the images, send it to a repeater, and perform the path traversal by editing the file path of the image in the repeater. 
 
 ### Lab Examples:
-<img width="1152" height="864" alt="image" src="https://github.com/user-attachments/assets/940865bc-f5db-4c32-b8fb-da56bf22e50e" />
+<img width="1152" height="864" alt="image" src="https://github.com/user-attachments/assets/cf81ce59-8a48-40b1-9771-88e8813039c2" />
+
 
 
