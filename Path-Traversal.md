@@ -24,5 +24,8 @@ This is done using Burp Suite. Turn the intercept on, view images in http histor
 ### Lab Examples:
 https://youtu.be/XhieEh9BlGc?si=0OFciky09-fooICm
 
+<img width="1152" height="864" alt="Screenshot (16)" src="https://github.com/user-attachments/assets/4308faa3-5973-41cd-bd30-00a6839bd945" />
+
+
 
 
