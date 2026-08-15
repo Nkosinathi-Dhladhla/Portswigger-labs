@@ -1,4 +1,4 @@
-# SQL Injection
+# SQL Injection (Practitioner is at the bottom after the final lab)
 SQL Injection (SQLi) is a type of cyberattack where an attacker inserts malicious SQL code into an application's input fields to manipulate the database behind the application. 
 
 ## How to detect SQLi vulnerabilities 
@@ -71,3 +71,17 @@ This lab contains a SQL injection vulnerability in the login function.
 To solve the lab, perform a SQL injection attack that logs in to the application as the administrator user.
 
 https://youtu.be/ML3aGaloczI?si=piwR66H5-fh8EI6f
+
+# Practitioner (additional info)
+## SQL Injection Union attacks
+Union is used to retrieve data from other tables during SQLi
+
+The UNION keyword enables you to execute one or more additional SELECT queries and append the results to the original query. For example:
+
+SELECT a, b FROM table1 UNION SELECT c, d FROM table2
+This SQL query returns a single result set with two columns, containing values from columns a and b in table1 and columns c and d in table2.
+
+For a UNION query to work, two key requirements must be met:
+
+- The individual queries must return the same number of columns.
+- The data types in each column must be compatible between the individual queri
