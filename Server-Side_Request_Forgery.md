@@ -11,6 +11,7 @@ In an SSRF attack against the server, the attacker causes the application to mak
 - Read the HTML to identify the URL to delete the target user, which is:
 http://localhost/admin/delete?username=carlos
 - Submit this URL in the stockApi parameter, to deliver the SSRF attack.
+- https://youtu.be/lMxCQcktifs?si=Y8Y2v9-xz7xcQbYu
 
 # LAB 1
 - Browse to /admin and observe that you can't directly access the admin page.
@@ -32,6 +33,7 @@ Content-Length: 118
 Lab: Basic SSRF against another back-end system
 APPRENTICE
 
+
 ## LAB
 This lab has a stock check feature which fetches data from an internal system.
 
@@ -47,3 +49,6 @@ Click on the Status column to sort it by status code ascending. You should see a
 Click on this request, send it to Burp Repeater, and change the path in the stockApi to: /admin/delete?username=carlos
 
 stockApi=http://192.168.0.68/admin
+
+https://youtu.be/Ku6CK3Aes8Y?si=JKWjegWlYste5tn6
+
