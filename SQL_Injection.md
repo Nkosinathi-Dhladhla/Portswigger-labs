@@ -56,3 +56,18 @@ In this case, an attacker can log in as any user without the need for a password
 
 SELECT * FROM users WHERE username = 'administrator'--' AND password = ''
 This query returns the user whose username is administrator and successfully logs the attacker in as that user.
+
+## Lab 1
+This lab contains a SQL injection vulnerability in the product category filter. When the user selects a category, the application carries out a SQL query like the following:
+
+SELECT * FROM products WHERE category = 'Gifts' AND released = 1
+To solve the lab, perform a SQL injection attack that causes the application to display one or more unreleased products.
+
+https://youtu.be/alTceRdSxS0?si=fMfSEY-HDrT4o92O
+
+## Lab 2
+This lab contains a SQL injection vulnerability in the login function.
+
+To solve the lab, perform a SQL injection attack that logs in to the application as the administrator user.
+
+https://youtu.be/ML3aGaloczI?si=piwR66H5-fh8EI6f
