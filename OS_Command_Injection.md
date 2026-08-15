@@ -31,3 +31,12 @@ The injected echo command was executed, and the supplied string was echoed in th
 The original argument 29 was executed as a command, which caused an error.
 Placing the additional command separator & after the injected command is useful because it separates the injected command from whatever follows the injection point. This reduces the chance that what follows will prevent the injected command from executing.
 
+## Lab 1
+This lab contains an OS command injection vulnerability in the product stock checker.
+
+The application executes a shell command containing user-supplied product and store IDs, and returns the raw output from the command in its response.
+
+To solve the lab, execute the whoami command to determine the name of the current user.
+
+https://youtu.be/GDUadTiXXVk?si=qRBC3eb9FvqNCyTu
+
