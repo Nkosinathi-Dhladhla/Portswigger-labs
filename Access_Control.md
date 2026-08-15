@@ -57,3 +57,44 @@ Note
 This is an example of an insecure direct object reference (IDOR) vulnerability. This type of vulnerability arises where user-controller parameter values are used to access resources or functions directly.
 
 Often, a horizontal privilege escalation attack can be turned into a vertical privilege escalation, by compromising a more privileged user
+
+## Lab 1
+Go to the lab and view robots.txt by appending /robots.txt to the lab URL. Notice that the Disallow line discloses the path to the admin panel.
+In the URL bar, replace /robots.txt with /administrator-panel to load the admin panel.
+Delete carlos.
+
+https://youtu.be/qJ8mtm_G40E?si=Uf_PiDvwnbPQxR8S
+
+## Lab 2
+Review the lab home page's source using Burp Suite or your web browser's developer tools.
+Observe that it contains some JavaScript that discloses the URL of the admin panel.
+Load the admin panel and delete carlos.
+
+https://youtu.be/7Jve11VySNU?si=yZjMBGvytKU9090P
+
+## Lab 3
+Browse to /admin and observe that you can't access the admin panel.
+Browse to the login page.
+In Burp Proxy, turn interception on and enable response interception.
+Complete and submit the login page, and forward the resulting request in Burp.
+Observe that the response sets the cookie Admin=false. Change it to Admin=true.
+Load the admin panel and delete carlos.
+
+https://youtu.be/e_jsPdEeSto?si=U16C-Z6gYcts42Ro
+
+## Lab 4
+Find a blog post by carlos.
+Click on carlos and observe that the URL contains his user ID. Make a note of this ID.
+Log in using the supplied credentials and access your account page.
+Change the "id" parameter to the saved user ID.
+Retrieve and submit the API key.
+
+https://youtu.be/aaIfsH-fP5c?si=TFR8r_378K7Ilr6O
+
+## Lab 5
+Log in using the supplied credentials and access the user account page.
+Change the "id" parameter in the URL to administrator.
+View the response in Burp and observe that it contains the administrator's password.
+Log in to the administrator account and delete carlos.
+
+https://youtu.be/tcPkT82pa6k?si=J4i9MkEEparBgnTY
