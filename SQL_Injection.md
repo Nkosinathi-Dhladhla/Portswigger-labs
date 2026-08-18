@@ -84,4 +84,13 @@ This SQL query returns a single result set with two columns, containing values f
 For a UNION query to work, two key requirements must be met:
 
 - The individual queries must return the same number of columns.
-- The data types in each column must be compatible between the individual queri
+- The data types in each column must be compatible between the individual queries
+
+### When you perform an SQL Injection there are two effective methods to determine how many columns are being returned from the original query:
+- One method involves injecting a series of ORDER BY clauses and incrementing the specified column index until an error occurs. For example, if the injection point is a quoted string within the WHERE clause of the original query, you would submit:
+
+' ORDER BY 1--
+' ORDER BY 2--
+' ORDER BY 3--
+etc.
+-
