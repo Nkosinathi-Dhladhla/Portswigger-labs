@@ -11,7 +11,7 @@ You can detect SQL injection manually using a systematic set of tests against ev
 - OAST payloads designed to trigger an out-of-band network interaction when executed within a SQL query, and monitor any resulting interactions.
 
 Alternatively, you can find the majority of SQL injection vulnerabilities quickly and reliably using Burp Scanner.
-
+  
 ### Example:
 Imagine a shopping application that displays products in different categories. When the user clicks on the Gifts category, their browser requests the URL:
 
